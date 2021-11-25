@@ -19,7 +19,7 @@
                         <form method="GET" action="{{ route('users.index') }}">
                             <div class="form-row align-items-center">
                                 <div class="col">
-                                    <input type="search" wire:model.defer='search' class="form-control mb-2"
+                                    <input type="search" wire:model='search' class="form-control mb-2"
                                         id="inlineFormInput" placeholder="">
                                 </div>
                                 <div class="col" wire:loading>
@@ -31,7 +31,7 @@
                     </div>
                     <div>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <button wire:click='showUserModal' class="btn btn-primary">
                             New User
                         </button>
                     </div>
@@ -67,14 +67,18 @@
                     </tbody>
                 </table>
             </div>
+            {{-- paginate --}}
+            <div>
+                {{ $users->links('pagination::bootstrap-4') }}
+            </div>
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="userModalLabel">Create User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -88,7 +92,7 @@
 
                                 <div class="col-md-6">
                                     <input id="username" type="text"
-                                        class="form-control @error('name') is-invalid @enderror"
+                                        class="form-control @error('username') is-invalid @enderror"
                                         wire:model.defer="username">
 
                                     @error('username')
@@ -105,7 +109,7 @@
 
                                 <div class="col-md-6">
                                     <input id="firstName" type="text"
-                                        class="form-control @error('name') is-invalid @enderror"
+                                        class="form-control @error('firstName') is-invalid @enderror"
                                         wire:model.defer="firstName">
 
                                     @error('firstName')
@@ -122,7 +126,7 @@
 
                                 <div class="col-md-6">
                                     <input id="lastName" type="text"
-                                        class="form-control @error('name') is-invalid @enderror"
+                                        class="form-control @error('lastName') is-invalid @enderror"
                                         wire:model.defer="lastName">
 
                                     @error('lastName')

@@ -1,0 +1,11 @@
+link laravel-livewire documentasi untuk membuat grid screen
+https://laravel-livewire.com/screencasts/installation
+
+link untuk membuat input tanggal di form
+https://laravel-livewire.com/screencasts/s4-date-picker
+
+alamat github package
+https://github.com/Pikaday/Pikaday
+ atau
+bisa juga di
+https://flatpickr.js.org/

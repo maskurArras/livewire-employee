@@ -18,11 +18,14 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    {{-- form input date --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin.min.css') }}" rel="stylesheet">
     {{-- tailwindcss cdn --}}
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
     @livewireStyles
 </head>
 
@@ -44,7 +47,7 @@
             <hr class="sidebar-divider">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="/employees">
+                <a class="nav-link" href="{{ route('employees.index') }}">
                     <span>Employee Management</span></a>
             </li>
 
@@ -60,10 +63,10 @@
                 </a>
                 <div id="collapseSystem" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Country</a>
-                        <a class="collapse-item" href="">State</a>
-                        <a class="collapse-item" href="">Department</a>
-                        <a class="collapse-item" href="">City</a>
+                        <a class="collapse-item" href="{{ route('countries.index') }}">Country</a>
+                        <a class="collapse-item" href="{{ route('states.index') }}">State</a>
+                        <a class="collapse-item" href="{{ route('cities.index') }}">City</a>
+                        <a class="collapse-item" href="{{ route('departments.index') }}">Department</a>
                     </div>
                 </div>
             </li>
@@ -178,21 +181,24 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin.min.js') }}"></script>
+    {{-- form input date --}}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     @stack('modals')
 
     @livewireScripts
-    {{-- event close modal --}}
+    {{--jquery event modal --}}
     <script>
-        window.addEventListener('closeModal', event => {
-            $('#exampleModal').modal('hide')
+        window.addEventListener('modal', event => {
+            $(event.detail.modalId).modal(event.detail.actionModal)
         })
     </script>
-    {{-- event show modal --}}
+    {{-- jquery date --}}
     <script>
-        window.addEventListener('showModal', event => {
-            $('#exampleModal').modal('show')
-        })
+        $("#birthDate").flatpickr();
+    </script>
+    <script>
+        $("#dateHired").flatpickr();
     </script>
 </body>
 
