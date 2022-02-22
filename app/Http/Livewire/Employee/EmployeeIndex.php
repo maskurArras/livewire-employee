@@ -115,6 +115,7 @@ class EmployeeIndex extends Component
 
         $this->reset();
         $this->dispatchBrowserEvent('modal', ['modalId' => '#employeeModal', 'actionModal' => 'hide']);
+        // pesan pemberitahuan ke user
         session()->flash('employee-message', 'Employee successfully created');
     }
 
